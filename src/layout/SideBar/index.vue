@@ -9,7 +9,7 @@
         class="sidebar-menu"
         :collapse="isCollapse"
       >
-        <sidebar-item :routes="routes" />
+        <sidebar-item v-for="route in routes" :key="route.name" :route="route" />
       </el-menu>
     </el-scrollbar>
   </div>
