@@ -7,6 +7,7 @@ Vue.use(VueRouter)
  * name 必填不能重复（在生成侧边栏时作为唯一标示）
  * meta 用于生成菜单的icon和标题
  * hidden 用于隐藏菜单
+ * childern 子路由挂载子菜单（支持hidden）
  */
 export const constantRoutes = [
   {

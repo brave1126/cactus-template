@@ -20,17 +20,19 @@ import { constantRoutes } from '@/router/index.js'
 import SidebarItem from '@/layout/SideBar/SidebarItem.vue'
 export default {
   components: {
+    // eslint-disable-next-line vue/no-unused-components
     SidebarItem
   },
   data() {
     return {
-      isCollapse: false,
+      isCollapse: this.$store.getters.sidebarCollapse,
       routes: constantRoutes
     }
   },
   methods: {
     changeCoolapse() {
-      this.isCollapse = !this.isCollapse
+      this.$store.dispatch('settings/toggleSideBar')
+      this.isCollapse = this.$store.getters.sidebarCollapse
     }
   }
 }

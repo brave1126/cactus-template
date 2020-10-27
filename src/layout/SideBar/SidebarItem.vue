@@ -1,16 +1,18 @@
 <template>
   <div v-if="!route.hidden">
     <!-- 根据route的children字段判断sidebarItem组件具体渲染成menu还是submenu -->
-    <el-menu-item v-if="leOneChild" :index="leOneChild.name">
-      <div v-if="leOneChild.children">
-        <i :class="'el-icon-'+leOneChild.children[0].meta.icon" />
-        <span slot="title">{{ leOneChild.children[0].meta.title }}</span>
-      </div>
-      <div v-else>
-        <i :class="'el-icon-'+leOneChild.meta.icon" />
-        <span slot="title">{{ leOneChild.meta.title }}</span>
-      </div>
-    </el-menu-item>
+    <template v-if="leOneChild">
+      <el-menu-item :index="leOneChild.name">
+        <template v-if="leOneChild.children">
+          <i :class="'el-icon-'+leOneChild.children[0].meta.icon" />
+          <span slot="title">{{ leOneChild.children[0].meta.title }}</span>
+        </template>
+        <template v-else>
+          <i :class="'el-icon-'+leOneChild.meta.icon" />
+          <span slot="title">{{ leOneChild.meta.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
     <el-submenu v-else :index="gtOneChild.name">
       <template slot="title">
         <i :class="'el-icon-'+gtOneChild.meta.icon" />
@@ -51,5 +53,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+// 隐藏title
+.el-menu--collapse .el-submenu__title span{
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  visibility: hidden;
+  display: inline-block;
+}
+// 隐藏箭头
+.el-menu--collapse .el-submenu__icon-arrow {
+  display: none;
+}
+// 收缩时隐藏右边border
+.sidebar-menu.el-menu--collapse.el-menu{
+  border: cornflowerblue 0px solid;
+}
 </style>
