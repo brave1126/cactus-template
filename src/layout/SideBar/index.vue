@@ -5,11 +5,11 @@
     </div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
-        default-active="1"
+        :default-active="activeMenu"
         class="sidebar-menu"
         :collapse="isCollapse"
       >
-        <sidebar-item v-for="route in routes" :key="route.name" :route="route" />
+        <sidebar-item v-for="route in routes" :key="route.path" :route="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -20,13 +20,20 @@ import { constantRoutes } from '@/router/index.js'
 import SidebarItem from '@/layout/SideBar/SidebarItem.vue'
 export default {
   components: {
-    // eslint-disable-next-line vue/no-unused-components
     SidebarItem
   },
   data() {
     return {
       isCollapse: this.$store.getters.sidebarCollapse,
       routes: constantRoutes
+    }
+  },
+  computed: {
+    activeMenu() {
+      const route = this.$route
+      const { path } = route
+      console.log(path)
+      return path
     }
   },
   methods: {

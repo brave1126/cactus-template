@@ -4,7 +4,8 @@ import LayOut from '@/layout/index.vue'
 
 Vue.use(VueRouter)
 /**
- * name 必填不能重复（在生成侧边栏时作为唯一标示）
+ * path 必填不能重复（在生成侧边栏时作为唯一标示）
+ * name 路由名
  * meta 用于生成菜单的icon和标题
  * hidden 用于隐藏菜单
  * childern 子路由挂载子菜单（支持hidden）
@@ -13,7 +14,6 @@ export const constantRoutes = [
   {
     path: '/',
     name: 'dashbord',
-    hidden: true,
     meta: { icon: 'info', title: 'dashbord' },
     component: LayOut
   },
@@ -90,16 +90,12 @@ export const constantRoutes = [
         ]
       }
     ]
+  },
+  {
+    path: '*',
+    redirect: '/',
+    hidden: true
   }
-  // {
-  //   path: "/about",
-  //   name: "About",
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/About.vue")
-  // }
 ]
 
 const router = new VueRouter({
