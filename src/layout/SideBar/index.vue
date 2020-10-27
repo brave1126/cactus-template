@@ -9,10 +9,7 @@
         class="sidebar-menu"
         :collapse="isCollapse"
       >
-        <el-menu-item v-for="item in routes" :key="item.name" :index="item.name">
-          <i class="el-icon-menu" />
-          <span slot="title">{{ item.name }}</span>
-        </el-menu-item>
+        <sidebar-item :routes="routes" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -20,15 +17,16 @@
 
 <script>
 import { constantRoutes } from '@/router/index.js'
+import SidebarItem from '@/layout/SideBar/SidebarItem.vue'
 export default {
+  components: {
+    SidebarItem
+  },
   data() {
     return {
       isCollapse: false,
       routes: constantRoutes
     }
-  },
-  mounted() {
-    console.log(constantRoutes)
   },
   methods: {
     changeCoolapse() {
@@ -41,10 +39,13 @@ export default {
 <style lang="scss" scoped>
   .sidebar-menu:not(.el-menu--collapse) {
     width: 200px;
-    height:calc(100vh - 60px);
+    height:calc(100vh - 61px);
   }
   .sidebar-title {
-    height:60px;
+    height:61px;
     background-color:#42b983;
+    display: flex;
+    justify-content:center;
+    align-items: center;
   }
 </style>

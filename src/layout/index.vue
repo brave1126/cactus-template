@@ -3,19 +3,21 @@
     <side-bar />
     <div class="right-container">
       <nav-bar />
-      <div v-for="item in 30" :key="item">qqq</div>
+      <app-main />
     </div>
   </div>
 </template>
 
 <script>
-import SideBar from '@/components/LayOut/SideBar/index.vue'
-import NavBar from '@/components/LayOut/NavBar/index.vue'
+import SideBar from '@/layout/SideBar/index.vue'
+import NavBar from '@/layout/NavBar/index.vue'
+import AppMain from '@/layout/AppMain/index.vue'
 export default {
   name: 'Layout',
   components: {
     SideBar,
-    NavBar
+    NavBar,
+    AppMain
   },
   data() {
     return {
@@ -29,7 +31,7 @@ export default {
   display: flex;
   width: 100vw;
 }
-// 主内容
+// 右内容
 .right-container {
   height: 100vh;
   flex-grow: 1;
