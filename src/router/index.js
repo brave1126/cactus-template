@@ -13,9 +13,15 @@ Vue.use(VueRouter)
 export const constantRoutes = [
   {
     path: '/',
-    name: 'dashbord',
-    meta: { icon: 'info', title: 'dashbord' },
-    component: LayOut
+    component: LayOut,
+    redirect: '/dashbord',
+    children: [{
+      path: 'dashbord',
+      name: 'dashbord',
+      meta: { icon: 'info', title: 'dashbord' },
+      component: () =>
+        import(/* webpackChunkName: "about" */ '@/view/Dashbord/index.vue')
+    }]
   },
   {
     path: '/t1',
@@ -61,29 +67,35 @@ export const constantRoutes = [
     component: LayOut,
     children: [
       {
-        path: 'sub1',
-        name: 'sub1',
+        path: 'sub21',
+        name: 'sub21',
         meta: { icon: 'eleme', title: '子目录一' }
       },
       {
-        path: 'sub2',
-        name: 'sub2',
+        path: 'sub22',
+        name: 'sub22',
         meta: { icon: 'eleme', title: '子目录二' },
+        component: () =>
+          import(/* webpackChunkName: "about" */ '@/view/test/t1.vue'),
         children: [
           {
-            path: 'sub21',
-            name: 'sub21',
+            path: 'sub221',
+            name: 'sub221',
             meta: { icon: 'eleme', title: '子子目录一' }
           },
           {
-            path: 's22',
-            name: 's22',
+            path: 'sub222',
+            name: 'sub222',
             meta: { icon: 'eleme', title: '子子目录二' },
+            component: () =>
+              import(/* webpackChunkName: "about" */ '@/view/test/t2.vue'),
             children: [
               {
-                path: 'sub221',
-                name: 'sub221',
-                meta: { icon: 'eleme', title: '子子子目录一' }
+                path: 'sub2221',
+                name: 'sub2221',
+                meta: { icon: 'eleme', title: '子子子目录一' },
+                component: () =>
+                  import(/* webpackChunkName: "about" */ '@/view/Dashbord/index.vue')
               }
             ]
           }

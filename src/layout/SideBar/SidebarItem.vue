@@ -2,7 +2,9 @@
   <div v-if="!route.hidden">
     <!-- 根据route的children字段判断sidebarItem组件具体渲染成menu还是submenu -->
     <template v-if="leOneChild">
-      <el-menu-item :index="resolvePath(route.path)">
+      <!-- <= 一个children -->
+      <el-menu-item :index="getMenuItemIndex()">
+        <!-- <el-menu-item index="/"> -->
         <!-- 有一个children -->
         <template v-if="leOneChild.children && leOneChild.children[0].meta">
           <i :class="'el-icon-'+leOneChild.children[0].meta.icon" />
@@ -15,12 +17,19 @@
         </template>
       </el-menu-item>
     </template>
-    <el-submenu v-else :index="resolvePath(route.path)">
+    <!-- 多个children -->
+    <el-submenu v-else :index="getSubmenuIndex(route.path)">
+      <!-- <el-submenu v-else index="/"> -->
       <template slot="title">
         <i :class="'el-icon-'+gtOneChild.meta.icon" />
         <span slot="title">{{ gtOneChild.meta.title }}</span>
       </template>
-      <sidebar-item v-for="cRoute in gtOneChild.children" :key="cRoute.path" :route="cRoute" :base-path="resolvePath(route.path)" />
+      <sidebar-item
+        v-for="cRoute in gtOneChild.children"
+        :key="cRoute.path"
+        :route="cRoute"
+        :base-path="submenuIndex"
+      />
     </el-submenu>
   </div>
 </template>
@@ -42,7 +51,8 @@ export default {
   data() {
     return {
       leOneChild: undefined,
-      gtOneChild: undefined
+      gtOneChild: undefined,
+      submenuIndex: undefined
     }
   },
   created() {
@@ -57,7 +67,21 @@ export default {
       }
     },
     resolvePath(routePath) {
+      // debugger
+      // console.log(this.basePath, routePath, '拼接:' + path.resolve(this.basePath, routePath))
       return path.resolve(this.basePath, routePath)
+    },
+    getSubmenuIndex(routePath) {
+      this.submenuIndex = this.resolvePath(routePath)
+      return this.submenuIndex
+    },
+    getMenuItemIndex() {
+      if (this.leOneChild.children) {
+        const hiddenPath = this.resolvePath(this.leOneChild.path)
+        return path.resolve(hiddenPath, this.leOneChild.children[0].path)
+      } else {
+        return this.resolvePath(this.leOneChild.path)
+      }
     }
   }
 }

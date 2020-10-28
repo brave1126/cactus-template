@@ -9,7 +9,12 @@
         class="sidebar-menu"
         :collapse="isCollapse"
       >
-        <sidebar-item v-for="route in routes" :key="route.path" :route="route" :base-path="route.path" />
+        <sidebar-item
+          v-for="route in routes"
+          :key="route.path"
+          :route="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -32,7 +37,6 @@ export default {
     activeMenu() {
       const route = this.$route
       const { path } = route
-      console.log(path)
       return path
     }
   },
