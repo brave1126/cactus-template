@@ -39,7 +39,14 @@ export const constantRoutes = [
     path: '/t3',
     name: 't3',
     meta: { icon: 'setting', title: 'test-three' },
-    component: LayOut
+    component: LayOut,
+    children: [{
+      path: 't31',
+      meta: { icon: 'setting', title: 'test-three' },
+      component: () =>
+        import(/* webpackChunkName: "about" */ '@/view/test/t3.vue')
+    }
+    ]
   },
   {
     path: '/t4',
