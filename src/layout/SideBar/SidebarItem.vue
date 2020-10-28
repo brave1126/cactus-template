@@ -59,7 +59,6 @@ export default {
     return {
       leOneChild: undefined,
       gtOneChild: undefined,
-      urlRoute: undefined,
       submenuIndex: undefined
     }
   },
