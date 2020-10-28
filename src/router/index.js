@@ -104,6 +104,10 @@ export const constantRoutes = [
     ]
   },
   {
+    path: 'http://www.baidu.com',
+    meta: { icon: 'eleme', title: '百度' }
+  },
+  {
     path: '*',
     redirect: '/',
     hidden: true
