@@ -94,26 +94,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-// 隐藏title
-.el-menu--collapse .el-submenu__title span{
-  height: 0;
-  width: 0;
-  overflow: hidden;
-  visibility: hidden;
-  display: inline-block;
-}
-// 隐藏箭头
-.el-menu--collapse .el-submenu__icon-arrow {
-  display: none;
-}
-// 收缩时隐藏右边border
-.sidebar-menu.el-menu--collapse.el-menu{
-  border: cornflowerblue 0px solid;
-}
-a {
-  cursor: pointer;
-  text-decoration: none;
-}
-</style>
