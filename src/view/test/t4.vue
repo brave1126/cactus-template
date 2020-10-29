@@ -22,7 +22,6 @@
 
 <script>
 import { constantRoutes } from '@/router/index.js'
-// import SidebarItem from '@/layout/SideBar/SidebarItem.vue'
 import SidebarItem from '@/layout/SideBar/SidebarItemRender.vue'
 export default {
   components: {
@@ -49,13 +48,13 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
-  .sidebar-menu:not(.el-menu--collapse) {
+.sidebar-menu:not(.el-menu--collapse) {
     width: 200px;
+    height:calc(100vh - 122px);
   }
   .sidebar-menu {
-    height:calc(100vh - 61px);
+    height:calc(100vh - 122px);
   }
   .sidebar-title {
     height:61px;

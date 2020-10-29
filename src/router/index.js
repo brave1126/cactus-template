@@ -33,7 +33,14 @@ export const constantRoutes = [
     path: '/t1',
     name: 't1',
     meta: { icon: 'user', title: 'test-one' },
-    component: LayOut
+    component: LayOut,
+    children: [{
+      path: 't11',
+      name: 't11',
+      meta: { icon: 'user', title: 'test-one' },
+      component: () =>
+        import(/* webpackChunkName: "about" */ '@/view/test/t4.vue')
+    }]
   },
   {
     path: '/t2',
