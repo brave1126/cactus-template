@@ -6,11 +6,17 @@ Vue.use(VueRouter)
 /**
  * path 必填不能重复（在生成侧边栏时作为唯一标示）
  * name 路由名
- * meta 用于生成菜单的icon和标题
+ * meta 必填 用于生成菜单的icon和标题以及面包屑
  * hidden 用于隐藏菜单
  * childern 子路由挂载子菜单（支持hidden）
  */
 export const constantRoutes = [
+  {
+    path: '/redirect',
+    hidden: true,
+    component: () =>
+      import(/* webpackChunkName: "about" */ '@/redirect.vue')
+  },
   {
     path: '/',
     component: LayOut,

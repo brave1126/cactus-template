@@ -1,29 +1,20 @@
 <template>
-  <div>
-    <el-menu
-      :default-active="activeIndex"
-      class="navbar-menu"
-      mode="horizontal"
-      @select="handleSelect"
-    >
-      <el-menu-item index="1">处理中心</el-menu-item>
-      <el-menu-item index="2">处理中心</el-menu-item>
-      <el-menu-item index="3">处理中心</el-menu-item>
-      <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-    </el-menu>
+  <div
+    class="navbar-menu"
+  >
+    <bread-crumb />
   </div>
 </template>
 
 <script>
+import BreadCrumb from '@/layout/NavBar/BreadCrumb.vue'
 export default {
+  components: {
+    BreadCrumb
+  },
   data() {
     return {
-      activeIndex: '2'
-    }
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath)
+
     }
   }
 }
@@ -31,6 +22,11 @@ export default {
 
 <style lang="scss" scoped>
 .navbar-menu {
+  padding-left: 10px;
+  height: 61px;
   width: calc(100vh-200px);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
 }
 </style>

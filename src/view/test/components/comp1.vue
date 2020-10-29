@@ -13,7 +13,6 @@ export default {
   },
   created() {
     this.num = '999'
-    console.log('dalog中的组件初始化')
   }
 
 }

@@ -77,8 +77,6 @@ export default {
       }
     },
     resolvePath(routePath) {
-      // debugger
-      // console.log(this.basePath, routePath, '拼接:' + path.resolve(this.basePath, routePath))
       return path.resolve(this.basePath, routePath)
     },
     getSubmenuIndex(routePath) {
